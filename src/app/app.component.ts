@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,31 @@ import { FormArray, FormControl, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  closeResult: string;
   form;
   /**
    *
    */
-  constructor() {
+  constructor(private modalService: NgbModal) {
     this.createForm();    
+  }
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
   ngOnit() {
@@ -25,7 +44,8 @@ export class AppComponent {
       customerName: new FormControl(),
       location: new FormControl(),
       details: new FormArray([
-      ])
+      ]),
+      modalText: new FormControl()
     });
   }
 
