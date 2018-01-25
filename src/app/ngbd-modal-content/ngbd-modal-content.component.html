@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Hello, {{name}}!</p>
+
+  <div [formGroup]="componentForm">
+    <div formArrayName="parts" *ngFor="let part of componentForm.controls.parts.controls; let p = index;">
+      <div [formGroupName]="p" *ngFor="let c of partList">
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" formControlName="partName" name="partName" [value]="c.id">{{c.name}}
+            </label>
+          </div>
+        </div>
+        <div formArrayName="coats" *ngFor="let item of part.controls.coats.controls; let x = index;">
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="Coat">Coat</label>
+            <div class="col-md-9">
+              <div [formGroupName]="x" *ngFor="let i of c.level">  
+                <label class="radio-inline">
+                  <input type="radio" formControlName="level" name="level" [value]="i.id">{{i.name}}
+                </label>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
+
+{{componentForm.value | json}}

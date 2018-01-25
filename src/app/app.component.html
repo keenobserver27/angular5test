@@ -8,15 +8,12 @@
       <input formControlName="area" placeholder="Area">
       <input formControlName="width" placeholder="Width">
       <input formControlName="length" placeholder="Length">
+      <a class="btn btn-sm btn-outline-primary" (click)="open(content)">Select</a>
       <a (click)="deleteDetail(i)" class="btn btn-primary btn-sm">X</a>
     </div>
   </div>
-</form>
-<button (click)="addDetail()">Add Details</button>
-<br>
-{{ form.value | json}}
 
-<ng-template #content let-c="close" let-d="dismiss">
+  <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
       <h4 class="modal-title">Modal title</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -24,16 +21,35 @@
       </button>
     </div>
     <div class="modal-body">
-      <p>One fine body&hellip;</p>
-      <input id="modalText" name="modalText" placeholder="modal text">
+    <div [formGroup]="partGroup">
+      <div class="radio-inline">
+        <label>
+          <input type="radio" formControlName="level" [value]="1"> 1
+        </label>
+        <label>
+          <input type="radio" formControlName="level" [value]="2"> 2
+        </label>
+        <label>
+          <input type="radio" formControlName="level" [value]="3"> 3
+        </label>
+      </div>
+        </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c(modalText)">Close</button>
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
     </div>
   </ng-template>
   
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+  
   
   <hr>
   
   <pre>{{closeResult}}</pre>
+
+</form>
+<button (click)="addDetail()">Add Details</button>
+<br>
+{{ form.value | json}}
+
+<ngbd-modal-component></ngbd-modal-component>
+

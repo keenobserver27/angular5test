@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalComponentComponent } from './ngbd-modal-component/ngbd-modal-component.component';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,23 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent {
   closeResult: string;
   form;
+  partGroup;
   /**
    *
    */
   constructor(private modalService: NgbModal) {
     this.createForm();    
+    this.getCoat();
   }
+
+
 
   open(content) {
     this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+      this.closeResult = this.partGroup.value.level; //`Closed with: ${result}`;
+      
+      
+
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
@@ -44,6 +52,17 @@ export class AppComponent {
       customerName: new FormControl(),
       location: new FormControl(),
       details: new FormArray([
+        new FormGroup({
+      area: new FormControl(),
+      length: new FormControl(),
+      width: new FormControl(),
+      parts: new FormArray([
+        // new FormGroup({
+        //   name: new FormControl(),
+        //   level: new FormControl()
+        // })
+      ])
+    })
       ]),
       modalText: new FormControl()
     });
@@ -58,10 +77,10 @@ export class AppComponent {
       length: new FormControl(),
       width: new FormControl(),
       parts: new FormArray([
-        new FormGroup({
-          name: new FormControl(),
-          level: new FormControl()
-        })
+        // new FormGroup({
+        //   name: new FormControl(),
+        //   level: new FormControl()
+        // })
       ])
     }))
   }
@@ -69,5 +88,13 @@ export class AppComponent {
   deleteDetail(index){
     this.details().removeAt(index);
   }  
+
+  getCoat(){
+    this.partGroup = 
+      new FormGroup({
+        name: new FormControl(),
+        level: new FormControl()
+      })
+  }
 
 }
