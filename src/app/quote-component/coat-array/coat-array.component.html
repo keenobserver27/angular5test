@@ -1,0 +1,13 @@
+<div [formGroup]="parentForm">
+    <div formArrayName="coats">
+        <coat *ngFor="let coat of coats; let i = index" 
+          [formArray]="parentForm.controls.coats" 
+          [coat]="coat">
+        </coat>
+    </div>
+    <!-- <div class="margin-20">
+        <button class="btn btn-primary" (click)="addCoat()">
+            Add another email +
+        </button>
+    </div> -->
+</div>

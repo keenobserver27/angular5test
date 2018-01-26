@@ -1,0 +1,10 @@
+<div class="container">
+    <form [formGroup]="componentForm">
+        
+        <quote-component-array [parentForm]="componentForm" [components]="data?.components"></quote-component-array>
+
+    </form>
+
+    <h5>Details</h5>
+    <pre>{{ componentForm.value | json }}</pre>
+</div>

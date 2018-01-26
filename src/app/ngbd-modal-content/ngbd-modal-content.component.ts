@@ -13,7 +13,12 @@ export class NgbdModalContentComponent implements OnInit {
   @Input() name;
   partList;
   componentForm;
-
+  data: Object = [{
+    componentName: '',
+    coatLevel: [{
+      level:''
+    }]
+  }];
   constructor(public activeModal: NgbActiveModal, private partService: PartsService) {
     // this.createComponent();
   }
@@ -25,6 +30,7 @@ export class NgbdModalContentComponent implements OnInit {
 
   createComponent() {
     this.componentForm = new FormGroup({
+    // level: new FormControl(),  
     parts: new FormArray([
       new FormGroup({
         partName: new FormControl(),

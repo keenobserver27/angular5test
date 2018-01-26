@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <!-- <span>Component {{index + 1}}</span> -->
+        <!-- <span class="glyphicon glyphicon-remove pull-right" *ngIf="formArray.length > 1" (click)="removed.emit()"></span> -->
+    </div>
+    <div class="panel-body">
+        <div [formGroup]="partGroup">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" [value]="part.id"> {{part.name}}
+                    </label>
+                  </div>
+            </div>
+            <coat-array [parentForm]="partGroup" [coats]="part?.coatlevel"></coat-array>
+        </div>
+    </div>
+</div>
