@@ -1,5 +1,5 @@
 import { QuoteComponent } from './../../models/quote.component';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,10 @@ export class QuoteComponentForm implements OnInit {
 
   data: QuoteComponent;
   
-  componentForm: FormGroup  
+  componentForm: FormGroup;
+  
+  @Output('update')
+  change: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   
   constructor(private fb: FormBuilder) { }
 
@@ -26,5 +29,9 @@ export class QuoteComponentForm implements OnInit {
     return this.fb.group({
       areaID: this.areaID
     })
+  }
+
+  SelectedComponent(){
+   this.change.emit(this.componentForm.value); 
   }
 }

@@ -19,13 +19,16 @@ export class AppComponent {
     this.createForm();    
     this.getCoat();
   }
+  
+  onSubmit(){
+    console.log('submit:');
+  }
 
-
-
-  open(content) {
+  open(content, index) {
+    console.log(index);
     this.modalService.open(content).result.then((result) => {
-      this.closeResult = this.partGroup.value.level; //`Closed with: ${result}`;
-      
+      this.closeResult = `Closed with: ${index}`;
+      // console.log(this.closeResult);
       
 
     }, (reason) => {
@@ -54,6 +57,7 @@ export class AppComponent {
       details: new FormArray([
         new FormGroup({
       area: new FormControl(),
+      areaName: new FormControl(),
       length: new FormControl(),
       width: new FormControl(),
       parts: new FormArray([
@@ -74,6 +78,7 @@ export class AppComponent {
     this.details().push(
     new FormGroup({
       area: new FormControl(),
+      areaName: new FormControl(),
       length: new FormControl(),
       width: new FormControl(),
       parts: new FormArray([
@@ -97,4 +102,11 @@ export class AppComponent {
       })
   }
 
+  getNotification(evt) {
+    console.log('Message received...', evt);
+  }
+
+  getSelectedComponent(event){
+    console.log(event);
+  }
 }

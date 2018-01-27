@@ -1,52 +1,12 @@
 <div class="modal-header">
-  <h4 class="modal-title">Hi there!</h4>
+  <h4 class="modal-title">Selected Area: {{name}}</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <!-- <p>Hello, {{name}}!</p>
-  <div [formGroup]="componentForm">
-    <div formArrayName="parts" *ngFor="let part of componentForm.controls.parts.controls; let p = index;">
-      <div [formGroupName]="p" *ngFor="let c of partList">
-      <div class="row">
-      <div class="col-md-2">
-        <div class="form-group">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" formControlName="partName" name="partName" [value]="c.id">{{c.name}}
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div formArrayName="coats" *ngFor="let item of part.controls.coats.controls; let x = index;">
-          <div class="form-group">
-            <div [formGroupName]="x" *ngFor="let i of c.level" class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary">
-                    <input type="radio" formControlName="level" name="level" id="level" autocomplete="off" [value]="i.id"> {{i.name}}
-                </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- <fieldset FormGroupName="data" *ngFor="let part of partList; let a = index;">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" [(ngModel)]="data.componentName" name="componentName" [value]="part.id">{{part.name}}
-      </label>
-    </div>
-    <fieldset *ngFor="let coat of part.level; let x = index;" class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-secondary">
-        <input type="radio" [(ngModel)]="data.coatLevel" name="level" id="level" [value]="coat.id"> {{coat.name}}
-      </label>
-    </fieldset>
-  </fieldset>   -->
+  <quote-component-form [areaID]="id"></quote-component-form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <button type="button" class="btn btn-outline-dark" (click)="notify()">Close</button>
 </div>

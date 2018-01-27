@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContentComponent } from '../ngbd-modal-content/ngbd-modal-content.component';
 
@@ -10,11 +11,18 @@ import { NgbdModalContentComponent } from '../ngbd-modal-content/ngbd-modal-cont
 })
 export class NgbdModalComponentComponent implements OnInit {
 
+  @Input() areaID;
+  @Input() areaName;
+  
+  @Output()('update')
+  change: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+
   constructor(private modalService: NgbModal) {}
 
   open() {
     const modalRef = this.modalService.open(NgbdModalContentComponent);
-    modalRef.componentInstance.name = 'Brylle';    
+    modalRef.componentInstance.id = this.areaID;    
+    modalRef.componentInstance.name = this.areaName;
   }
 
   ngOnInit() {

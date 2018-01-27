@@ -1,6 +1,6 @@
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
 import { PartsService } from './../parts.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { QuoteComponentForm } from '../quote-component/quote-component-form/quote-component-form.component';
 
@@ -10,39 +10,19 @@ import { QuoteComponentForm } from '../quote-component/quote-component-form/quot
   styleUrls: ['./ngbd-modal-content.component.css']
 })
 export class NgbdModalContentComponent implements OnInit {
-
+  @Input() id;
   @Input() name;
-  partList;
-  componentForm;
-  data: Object = [{
-    componentName: '',
-    coatLevel: [{
-      level:''
-    }]
-  }];
-  constructor(public activeModal: NgbActiveModal, private partService: PartsService) {
-    // this.createComponent();
+  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+  constructor(public activeModal: NgbActiveModal) {
   }
 
   ngOnInit() {
-    this.createComponent();
-    this.partList = this.partService.getparts();    
   }
 
-  createComponent() {
-    this.componentForm = new FormGroup({
-    // level: new FormControl(),  
-    parts: new FormArray([
-      new FormGroup({
-        partName: new FormControl(),
-        coats: new FormArray([
-          new FormGroup({
-            level: new FormControl()
-          })
-        ])
-      })
-    ])
-  })
+  notify(){
+    console.log('Notify clicked...');
+    this.notifyParent.emit('Here is an Emit from the Child...');
+    this.activeModal.close('Notify click');
   }
 
 }

@@ -5,39 +5,14 @@
   <div formArrayName="details" *ngFor="let item of form.get('details').controls; let i = index;">
     <div [formGroupName]="i">
       <input formControlName="area" placeholder="Area">
+      <input formControlName="areaName" placeholder="Area Name">
       <input formControlName="width" placeholder="Width">
       <input formControlName="length" placeholder="Length">
-      <a class="btn btn-sm btn-outline-primary" (click)="open(content)">Select</a>
+      <ngbd-modal-component [areaID]="item.get('area').value" [areaName]="item.get('areaName').value" (notifyParent)="getNotification($event)"></ngbd-modal-component>
       <a (click)="deleteDetail(i)" class="btn btn-primary btn-sm">X</a>
     </div>
   </div>
-
-  <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <quote-component-form [areaID]="1"></quote-component-form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-    </div>
-  </ng-template>
-
-
-
-  <hr>
-
-  <pre>{{closeResult}}</pre>
-
 </form>
 <button (click)="addDetail()">Add Details</button>
 <br>
-<!-- {{ form.value | json}} -->
-
-<!-- <ngbd-modal-component></ngbd-modal-component> -->
-
-<!-- <quote-component-form></quote-component-form> -->
+{{ form.value | json}}
