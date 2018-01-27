@@ -19,6 +19,6 @@ export class PartComponentArray implements OnInit {
 
   ngOnInit() {
     this.parentForm.addControl('components', new FormArray([]));    
-    this.partList = this.quoteComponentService.getComponents().components;    
+    this.partList = this.quoteComponentService.getComponents().components; 
   }
 }
