@@ -1,7 +1,6 @@
-import { KeyValuePair } from './keyvaluepair';
-
 export interface Part {
-  id: number;
+  isSelected: boolean;
+  partID: number;
   name: string;
-  coatLevel: KeyValuePair[];
+  coatLevel: number;
 };

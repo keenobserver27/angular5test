@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuoteComponentArrayComponent } from './quote-component-array.component';
+import { PartComponentArray } from './part-component-array.component';
 
 describe('QuoteComponentArrayComponent', () => {
-  let component: QuoteComponentArrayComponent;
-  let fixture: ComponentFixture<QuoteComponentArrayComponent>;
+  let component: PartComponentArray;
+  let fixture: ComponentFixture<PartComponentArray>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuoteComponentArrayComponent ]
+      declarations: [ PartComponentArray ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuoteComponentArrayComponent);
+    fixture = TestBed.createComponent(PartComponentArray);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

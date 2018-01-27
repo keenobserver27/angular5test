@@ -2,6 +2,7 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
 import { PartsService } from './../parts.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { QuoteComponentForm } from '../quote-component/quote-component-form/quote-component-form.component';
 
 @Component({
   selector: 'ngbd-modal-content',

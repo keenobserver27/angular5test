@@ -1,18 +1,27 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <!-- <span>Component {{index + 1}}</span> -->
-        <!-- <span class="glyphicon glyphicon-remove pull-right" *ngIf="formArray.length > 1" (click)="removed.emit()"></span> -->
     </div>
     <div class="panel-body">
         <div [formGroup]="partGroup">
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox" [value]="part.id"> {{part.name}}
-                    </label>
-                  </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" formControlName="isSelected"> {{partGroup.get('name').value}} 
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    Coat Level :
+                    <div *ngFor="let coat of part.coats" class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="coatLevel">
+                        <label ngbButtonLabel class="btn-primary">
+                            <input ngbButton type="radio" [value]="coat.id" [checked]="coatLevel"> {{coat.name}}
+                        </label>
+                    </div>
+                </div>
             </div>
-            <coat-array [parentForm]="partGroup" [coats]="part?.coatlevel"></coat-array>
         </div>
     </div>
 </div>

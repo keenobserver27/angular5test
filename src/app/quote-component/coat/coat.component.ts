@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms/src/model';
 import { CoatLevels } from './../../models/coat.level';
 import { KeyValuePair } from './../../models/keyvaluepair';
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
@@ -27,18 +28,20 @@ export class CoatComponent implements OnInit {
   constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.coatGroup = this.toFormGroup(this.coat);
+    this.coatGroup = this.toFormGroup();
+    // console.log("coat control:", this.coatGroup.controls);
 
     resolvedPromise.then(() => {
       this.index = this.formArray.length;
       this.formArray.push(this.coatGroup);
-  })
+    });
+
+    console.log(this.coatGroup);
   }
 
-  toFormGroup(coat: KeyValuePair) {
+  toFormGroup() {
     return this.fb.group({
-        id: coat.id,
-        name: coat.name 
+        coatLevel: ''
     });
 }
 }

@@ -34,7 +34,7 @@
       </div>
     </div>
   </div> -->
-  <fieldset FormGroupName="data" *ngFor="let part of partList; let a = index;">
+  <!-- <fieldset FormGroupName="data" *ngFor="let part of partList; let a = index;">
     <div class="checkbox">
       <label>
         <input type="checkbox" [(ngModel)]="data.componentName" name="componentName" [value]="part.id">{{part.name}}
@@ -45,7 +45,7 @@
         <input type="radio" [(ngModel)]="data.coatLevel" name="level" id="level" [value]="coat.id"> {{coat.name}}
       </label>
     </fieldset>
-  </fieldset>  
+  </fieldset>   -->
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>

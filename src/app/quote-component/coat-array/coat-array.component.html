@@ -1,13 +1,16 @@
 <div [formGroup]="parentForm">
     <div formArrayName="coats">
-        <coat *ngFor="let coat of coats; let i = index" 
+        <!-- <coat *ngFor="let coat of coats; let i = index" 
           [formArray]="parentForm.controls.coats" 
           [coat]="coat">
-        </coat>
+        </coat> -->
+        <!-- <fieldset *ngFor="let coatLevel of parentForm.controls.coats; let x = index;" class="btn-group btn-group-toggle" data-toggle="buttons"> -->
+        <div *ngFor="let coat of coats; let i = index">
+            <label class="btn btn-secondary">
+              <input type="radio" [value]="coat.id"> {{coat.name}}
+            </label>
+        </div>
+          <!-- </fieldset>   -->
+
     </div>
-    <!-- <div class="margin-20">
-        <button class="btn btn-primary" (click)="addCoat()">
-            Add another email +
-        </button>
-    </div> -->
 </div>

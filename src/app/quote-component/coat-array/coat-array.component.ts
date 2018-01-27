@@ -16,13 +16,19 @@ export class CoatArrayComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.parentForm.addControl('coats', new FormArray([]));
+    this.parentForm.addControl('coats', new FormArray([
+      this.fb.group({
+        coatLevel:''
+      })
+    ]));
+    
+    console.log(this.parentForm.controls);
   }
 
-  addCoat(index: number) {
-    this.coats.push({
-        id: 1,
-        name: ''
-    });
-}
+  // addCoat(index: number) {
+  //   this.coats.push({
+  //       id: 1,
+  //       name: ''
+  //   });
+  // }
 }

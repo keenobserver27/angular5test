@@ -1,9 +1,8 @@
 <br>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input formControlName="customerName" placeholder="Customer Name">
-    <input formControlName="location" placeholder="Location">
-    <div formArrayName="details"
-    *ngFor="let item of form.get('details').controls; let i = index;">
+  <input formControlName="customerName" placeholder="Customer Name">
+  <input formControlName="location" placeholder="Location">
+  <div formArrayName="details" *ngFor="let item of form.get('details').controls; let i = index;">
     <div [formGroupName]="i">
       <input formControlName="area" placeholder="Area">
       <input formControlName="width" placeholder="Width">
@@ -21,36 +20,24 @@
       </button>
     </div>
     <div class="modal-body">
-    <div [formGroup]="partGroup">
-      <div class="radio-inline">
-        <label>
-          <input type="radio" formControlName="level" [value]="1"> 1
-        </label>
-        <label>
-          <input type="radio" formControlName="level" [value]="2"> 2
-        </label>
-        <label>
-          <input type="radio" formControlName="level" [value]="3"> 3
-        </label>
-      </div>
-        </div>
+      <quote-component-form [areaID]="1"></quote-component-form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
     </div>
   </ng-template>
-  
-  
-  
+
+
+
   <hr>
-  
+
   <pre>{{closeResult}}</pre>
 
 </form>
 <button (click)="addDetail()">Add Details</button>
 <br>
-{{ form.value | json}}
+<!-- {{ form.value | json}} -->
 
 <!-- <ngbd-modal-component></ngbd-modal-component> -->
 
-<quote-component-form></quote-component-form>
+<!-- <quote-component-form></quote-component-form> -->

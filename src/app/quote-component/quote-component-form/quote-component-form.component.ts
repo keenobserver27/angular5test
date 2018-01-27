@@ -1,7 +1,6 @@
 import { QuoteComponent } from './../../models/quote.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { QuoteComponentService } from '../../services/quote-component.service';
 
 @Component({
   selector: 'quote-component-form',
@@ -10,20 +9,22 @@ import { QuoteComponentService } from '../../services/quote-component.service';
 })
 export class QuoteComponentForm implements OnInit {
 
-  data: QuoteComponent;
+  @Input()
+  areaID: number;
 
+  data: QuoteComponent;
+  
   componentForm: FormGroup  
   
-  constructor(private fb: FormBuilder, private quoteComponentService: QuoteComponentService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.data = this.quoteComponentService.getComponents();
     this.componentForm = this.toFormGroup(this.data);
   }
 
   toFormGroup(data: QuoteComponent){
     return this.fb.group({
-      data
+      areaID: this.areaID
     })
   }
 }
