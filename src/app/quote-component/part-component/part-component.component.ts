@@ -1,6 +1,9 @@
 import { Part } from './../../models/part';
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormArray, FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
+import { QuoteComponentService } from '../../services/quote-component.service';
+import { Quote } from '../../models/quote';
 
 const resolvedPromise = Promise.resolve(undefined);
 
@@ -15,32 +18,68 @@ export class PartComponent implements OnInit {
 
   @Input() part: Part;
 
-  // @Input() data: Part;
+  @Input() areaID: number;
 
   partGroup: FormGroup;
 
   index: number;
 
-  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) { }
+  subscription: Subscription;
+  error;
+  item: Quote;
+  processData;
+  partsData: Part[];
+  constructor(
+    private fb: FormBuilder, 
+    private cdRef: ChangeDetectorRef,
+    private quoteComponentService: QuoteComponentService
+  ) { }
 
   ngOnInit() {
+    this.getPartsData();
     this.partGroup = this.toFormGroup(this.part);    
     resolvedPromise.then(() => {
       this.index = this.formArray.length;
       this.formArray.push(this.partGroup);
-    });
-
-    // this.partGroup.get('isSelected').setValue(this.data == null ? false:this.data.isSelected);
-    // console.log(this.data == null ? false:this.data.isSelected);
+    });    
   }
 
   toFormGroup(part: Part) {
     return this.fb.group({
-      isSelected: false,
+      isSelected: this.getIsSelected(this.partsData,part.partID),
       partID: part.partID,
       name: part.name,
-      coatLevel: 0
+      coatLevel: this.getCoatLevel(this.partsData, part.partID)
     });
   }
 
+  getPartsData() {
+    this.subscription = this.quoteComponentService.dataItem$
+     .subscribe(
+       item => {
+         this.item = item;
+         this.processData = this.item == null ? null : this.item.details.find(a => a.area == this.areaID);
+         this.partsData = this.processData == null ? null : this.processData.parts;        
+       },
+       err => this.error = err
+     );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  getIsSelected(data: Part[], id: number): boolean {    
+    if(data != null && data.find(a => a.partID == id))
+      return data.find(a => a.partID == id).isSelected;
+    
+    return false;
+  }
+
+  getCoatLevel(data: Part[], id: number): number {    
+    if(data != null && data.find(a => a.partID == id))
+      return data.find(a => a.partID == id).coatLevel;
+    
+    return 0;
+  }
 }

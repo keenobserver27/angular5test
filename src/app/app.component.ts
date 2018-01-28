@@ -88,5 +88,6 @@ export class AppComponent {
 
   deleteDetail(index) {
     this.details().removeAt(index);
+    this.quoteComponentService.changeData(this.form.value);
   }
 }

@@ -3,7 +3,8 @@
     <div formArrayName="components">
         <part-component *ngFor="let part of partList.components; let i = index" 
           [formArray]="parentForm.controls.components" 
-          [part]="part">
+          [part]="part"
+          [areaID]="areaID">
         </part-component>
     </div>
 </div>
