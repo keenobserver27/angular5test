@@ -1,5 +1,3 @@
-import { CoatLevels } from './../../models/coat.level';
-import { Parts } from './../../models/parts';
 import { Part } from './../../models/part';
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
@@ -22,8 +20,6 @@ export class PartComponent implements OnInit {
 
   index: number;
 
-  // @Output() removed = new EventEmitter();
-  
   constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -32,8 +28,7 @@ export class PartComponent implements OnInit {
     resolvedPromise.then(() => {
       this.index = this.formArray.length;
       this.formArray.push(this.partGroup);
-   });
-
+    });
   }
 
   toFormGroup(part: Part) {

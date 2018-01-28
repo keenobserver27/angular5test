@@ -4,8 +4,6 @@ import { QuoteComponent } from '../models/quote.component';
 @Injectable()
 export class QuoteComponentService {
 
-  
-
   getComponents() {
     return {
       components:[

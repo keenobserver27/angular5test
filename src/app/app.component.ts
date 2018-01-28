@@ -24,30 +24,12 @@ export class AppComponent {
     console.log('submit:');
   }
 
-  open(content, index) {
-    console.log(index);
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${index}`;
-      // console.log(this.closeResult);
-      
-
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-
   ngOnit() {
     
+  }
+
+  onNotify(event){
+   console.log("Parent Form: ", event); 
   }
 
   createForm() {
@@ -56,15 +38,11 @@ export class AppComponent {
       location: new FormControl(),
       details: new FormArray([
         new FormGroup({
-      area: new FormControl(),
-      areaName: new FormControl(),
+      area: new FormControl("1"),
+      areaName: new FormControl("Room 1"),
       length: new FormControl(),
       width: new FormControl(),
       parts: new FormArray([
-        // new FormGroup({
-        //   name: new FormControl(),
-        //   level: new FormControl()
-        // })
       ])
     })
       ]),
@@ -82,10 +60,7 @@ export class AppComponent {
       length: new FormControl(),
       width: new FormControl(),
       parts: new FormArray([
-        // new FormGroup({
-        //   name: new FormControl(),
-        //   level: new FormControl()
-        // })
+
       ])
     }))
   }
@@ -99,12 +74,6 @@ export class AppComponent {
       new FormGroup({
         name: new FormControl(),
         level: new FormControl()
-      })
-  }
-
-  
-
-  getSelectedComponent(event){
-    console.log(event);
+      });
   }
 }

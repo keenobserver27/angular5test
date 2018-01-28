@@ -1,5 +1,9 @@
 <div class="container">
-    <part-component-array [parentForm]="componentForm" [areaID]="areaID"></part-component-array>
+    <part-component-array [parentForm]="componentForm"></part-component-array>
 </div>
-<a class="btn btn-outline-primary" (click)="passComponentData()">Confirm</a>
+<div class="modal-footer">
+    <div class="pull-right">
+        <a class="btn btn-outline-primary" (click)="passComponentData()">Confirm</a>
+    </div>
+</div>
 <!-- {{componentForm.value | json}} -->

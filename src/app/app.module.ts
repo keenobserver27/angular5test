@@ -1,7 +1,5 @@
-import { PartsService } from './parts.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,9 +10,6 @@ import { QuoteComponentForm } from './quote-component/quote-component-form/quote
 import { QuoteComponentService } from './services/quote-component.service';
 import { PartComponentArray } from './quote-component/part-component-array/part-component-array.component';
 import { PartComponent } from './quote-component/part-component/part-component.component';
-import { CoatArrayComponent } from './quote-component/coat-array/coat-array.component';
-import { CoatComponent } from './quote-component/coat/coat.component';
-
 
 @NgModule({
   declarations: [
@@ -23,9 +18,7 @@ import { CoatComponent } from './quote-component/coat/coat.component';
     NgbdModalContentComponent,
     QuoteComponentForm,
     PartComponentArray,
-    PartComponent,
-    CoatArrayComponent,
-    CoatComponent
+    PartComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +26,7 @@ import { CoatComponent } from './quote-component/coat/coat.component';
     ReactiveFormsModule,
     NgbModule.forRoot()
   ],
-  providers: [PartsService,QuoteComponentService],
+  providers: [QuoteComponentService],
   bootstrap: [AppComponent],
   entryComponents:[
     NgbdModalContentComponent

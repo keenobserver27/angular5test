@@ -13,15 +13,18 @@ export class NgbdModalComponentComponent implements OnInit {
 
   @Input() areaID;
   @Input() areaName;
-
+  @Input() areaIndex;
+  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   constructor(private modalService: NgbModal) {}
 
   open() {
     const modalRef = this.modalService.open(NgbdModalContentComponent);
     modalRef.componentInstance.id = this.areaID;    
     modalRef.componentInstance.name = this.areaName;
+    modalRef.componentInstance.index = this.areaIndex;
     modalRef.componentInstance.notifyParent.subscribe(($e) => {
-      console.log($e);
+      // console.log($e);
+      this.notifyParent.emit($e);
     })
   }
 

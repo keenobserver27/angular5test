@@ -11,7 +11,8 @@ export class QuoteComponentForm implements OnInit {
 
   @Input()
   areaID: number;
-
+  @Input()
+  areaIndex: number;
   data: QuoteComponent;
   
   componentForm: FormGroup;
@@ -26,7 +27,8 @@ export class QuoteComponentForm implements OnInit {
 
   toFormGroup(data: QuoteComponent){
     return this.fb.group({
-      areaID: this.areaID
+      areaID: this.areaID,
+      areaIndex: this.areaIndex
     })
   }
 
