@@ -1,7 +1,6 @@
 import { Part } from './../../models/part';
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
-import { FormControl } from '@angular/forms/src/model';
+import { FormArray, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 const resolvedPromise = Promise.resolve(undefined);
 
