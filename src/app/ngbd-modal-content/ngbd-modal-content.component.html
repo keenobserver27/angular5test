@@ -5,7 +5,11 @@
   </button>
 </div>
 <div class="modal-body">
-  <quote-component-form [areaID]="id" [areaIndex]="index" (selectedComponents)="getSelectedComponents($event)"></quote-component-form>
+  <quote-component-form 
+    [areaID]="id" 
+    [areaIndex]="index" 
+    (selectedComponents)="getSelectedComponents($event)">
+  </quote-component-form>
 </div>
 <!-- <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark">Close</button>

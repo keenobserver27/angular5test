@@ -15,6 +15,8 @@ export class PartComponent implements OnInit {
 
   @Input() part: Part;
 
+  // @Input() data: Part;
+
   partGroup: FormGroup;
 
   index: number;
@@ -22,12 +24,14 @@ export class PartComponent implements OnInit {
   constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.partGroup = this.toFormGroup(this.part);
-
+    this.partGroup = this.toFormGroup(this.part);    
     resolvedPromise.then(() => {
       this.index = this.formArray.length;
       this.formArray.push(this.partGroup);
     });
+
+    // this.partGroup.get('isSelected').setValue(this.data == null ? false:this.data.isSelected);
+    // console.log(this.data == null ? false:this.data.isSelected);
   }
 
   toFormGroup(part: Part) {

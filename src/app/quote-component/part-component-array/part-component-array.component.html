@@ -1,7 +1,7 @@
 <div [formGroup]="parentForm">
     <!-- {{areaID}} -->
     <div formArrayName="components">
-        <part-component *ngFor="let part of partList; let i = index" 
+        <part-component *ngFor="let part of partList.components; let i = index" 
           [formArray]="parentForm.controls.components" 
           [part]="part">
         </part-component>

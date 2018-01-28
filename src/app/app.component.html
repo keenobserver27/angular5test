@@ -8,7 +8,11 @@
       <input formControlName="areaName" placeholder="Area Name">
       <input formControlName="width" placeholder="Width">
       <input formControlName="length" placeholder="Length">
-      <ngbd-modal-component [areaID]="item.get('area').value" [areaName]="item.get('areaName').value" [areaIndex]="i" (notifyParent)="onNotify($event)"></ngbd-modal-component>
+      <ngbd-modal-component 
+        [areaID]="item.get('area').value" 
+        [areaName]="item.get('areaName').value" 
+        [areaIndex]="i" 
+        (notifyParent)="onNotify($event)"></ngbd-modal-component>
       <a (click)="deleteDetail(i)" class="btn btn-primary btn-sm">X</a>
     </div>
   </div>
