@@ -15,9 +15,8 @@ export class QuoteComponentForm implements OnInit {
   data: QuoteComponent;
   
   componentForm: FormGroup;
-  
-  @Output('update')
-  change: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+
+  @Output() selectedComponents: EventEmitter<any> = new EventEmitter();
   
   constructor(private fb: FormBuilder) { }
 
@@ -31,7 +30,7 @@ export class QuoteComponentForm implements OnInit {
     })
   }
 
-  SelectedComponent(){
-   this.change.emit(this.componentForm.value); 
+  passComponentData(){
+    this.selectedComponents.emit(this.componentForm.value);
   }
 }

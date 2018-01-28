@@ -102,9 +102,7 @@ export class AppComponent {
       })
   }
 
-  getNotification(evt) {
-    console.log('Message received...', evt);
-  }
+  
 
   getSelectedComponent(event){
     console.log(event);

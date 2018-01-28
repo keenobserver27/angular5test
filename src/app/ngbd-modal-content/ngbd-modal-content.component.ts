@@ -1,3 +1,4 @@
+import { QuoteComponent } from './../models/quote.component';
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
 import { PartsService } from './../parts.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
@@ -13,6 +14,7 @@ export class NgbdModalContentComponent implements OnInit {
   @Input() id;
   @Input() name;
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+  data: QuoteComponent;
   constructor(public activeModal: NgbActiveModal) {
   }
 
@@ -20,9 +22,11 @@ export class NgbdModalContentComponent implements OnInit {
   }
 
   notify(){
-    console.log('Notify clicked...');
-    this.notifyParent.emit('Here is an Emit from the Child...');
+    this.notifyParent.emit(this.data);
     this.activeModal.close('Notify click');
   }
 
+  getSelectedComponents(event){
+    this.data = event;
+  }
 }

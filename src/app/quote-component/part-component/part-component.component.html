@@ -17,7 +17,7 @@
                     Coat Level :
                     <div *ngFor="let coat of part.coats" class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="coatLevel">
                         <label ngbButtonLabel class="btn-primary">
-                            <input ngbButton type="radio" [value]="coat.id" [checked]="coatLevel"> {{coat.name}}
+                            <input ngbButton type="radio" [value]="coat.id"> {{coat.name}}
                         </label>
                     </div>
                 </div>

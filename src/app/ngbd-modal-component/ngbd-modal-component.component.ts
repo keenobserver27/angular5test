@@ -13,9 +13,6 @@ export class NgbdModalComponentComponent implements OnInit {
 
   @Input() areaID;
   @Input() areaName;
-  
-  @Output()('update')
-  change: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
   constructor(private modalService: NgbModal) {}
 
@@ -23,9 +20,11 @@ export class NgbdModalComponentComponent implements OnInit {
     const modalRef = this.modalService.open(NgbdModalContentComponent);
     modalRef.componentInstance.id = this.areaID;    
     modalRef.componentInstance.name = this.areaName;
+    modalRef.componentInstance.notifyParent.subscribe(($e) => {
+      console.log($e);
+    })
   }
 
   ngOnInit() {
   }
-
 }

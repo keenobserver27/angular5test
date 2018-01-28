@@ -1,6 +1,6 @@
 import { QuoteComponentService } from './../../services/quote-component.service';
 import { Parts } from './../../models/parts';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Part } from '../../models/part';
 
@@ -13,7 +13,7 @@ export class PartComponentArray implements OnInit {
   
   @Input() parentForm: FormGroup;
   @Input() areaID: number;
-
+  
   partList;
   constructor(private fb: FormBuilder, private quoteComponentService: QuoteComponentService) { }
 
@@ -21,4 +21,5 @@ export class PartComponentArray implements OnInit {
     this.parentForm.addControl('components', new FormArray([]));    
     this.partList = this.quoteComponentService.getComponents().components; 
   }
+
 }

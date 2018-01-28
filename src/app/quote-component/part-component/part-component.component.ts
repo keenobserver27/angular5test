@@ -22,7 +22,7 @@ export class PartComponent implements OnInit {
 
   index: number;
 
-  @Output() removed = new EventEmitter();
+  // @Output() removed = new EventEmitter();
   
   constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) { }
 
