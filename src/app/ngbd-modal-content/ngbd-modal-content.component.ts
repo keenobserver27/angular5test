@@ -22,7 +22,6 @@ export class NgbdModalContentComponent implements OnInit {
   }
 
   getSelectedComponents(event){
-    // this.data = event;
     this.notifyParent.emit(event);
     this.activeModal.close('Notify click');
   }

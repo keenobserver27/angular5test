@@ -22,8 +22,7 @@ export class NgbdModalComponentComponent implements OnInit {
     modalRef.componentInstance.id = this.areaID;    
     modalRef.componentInstance.name = this.areaName;
     modalRef.componentInstance.index = this.areaIndex;
-    modalRef.componentInstance.notifyParent.subscribe(($e) => {
-      // console.log($e);
+    modalRef.componentInstance.notifyParent.subscribe(($e) => {      
       this.notifyParent.emit($e);
     })
   }

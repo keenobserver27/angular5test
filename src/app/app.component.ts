@@ -13,9 +13,8 @@ import { QuoteComponentService } from './services/quote-component.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  closeResult: string;
+  
   form;
-  partGroup;
   components: Part[];
   /**
    *

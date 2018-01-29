@@ -1,7 +1,5 @@
-import { QuoteComponent } from './../../models/quote.component';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Part } from '../../models/part';
 
 @Component({
   selector: 'quote-component-form',
@@ -14,8 +12,6 @@ export class QuoteComponentForm implements OnInit {
   areaID: number;
   @Input()
   areaIndex: number;
-
-  data: QuoteComponent;
   
   componentForm: FormGroup;
 
@@ -24,16 +20,13 @@ export class QuoteComponentForm implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.componentForm = this.toFormGroup(this.data);
-    // console.log("areaID:", this.areaID);
-    // console.log("areaIndex:", this.areaIndex);
+    this.componentForm = this.toFormGroup();
   }
 
-  toFormGroup(data: QuoteComponent){
+  toFormGroup(){
     return this.fb.group({
       areaID: this.areaID,
-      areaIndex: this.areaIndex//,
-      // components: this.components
+      areaIndex: this.areaIndex
     });
   }
 

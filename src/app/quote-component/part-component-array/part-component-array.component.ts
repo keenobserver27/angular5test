@@ -1,6 +1,3 @@
-import { Parts } from './../../models/parts';
-import { Quote } from './../../models/quote';
-import { Part } from './../../models/part';
 import { QuoteComponentService } from './../../services/quote-component.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
