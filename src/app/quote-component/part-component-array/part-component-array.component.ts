@@ -11,25 +11,15 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
   styleUrls: ['./part-component-array.component.css']
 })
 export class PartComponentArray implements OnInit {
-  @Input()
-  areaID: number;
-  @Input()
-  areaIndex: number;
+  
+  @Input() areaID: number;
   @Input() parentForm: FormGroup;
   
-  error;
-  item: Quote;
-  processData;
-  partsData;
-  partList: Parts;
+  partList;
   constructor(private fb: FormBuilder, private quoteComponentService: QuoteComponentService) { }
 
   ngOnInit() {
     this.parentForm.addControl('components', new FormArray([]));    
     this.partList = this.quoteComponentService.getComponents();
-    
   }
-
-  
-
 }
